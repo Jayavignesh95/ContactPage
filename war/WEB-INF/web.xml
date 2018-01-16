@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<servlet>
+		<servlet-name>LoginApp</servlet-name>
+		<servlet-class>com.app.LoginAppServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginApp</servlet-name>
+		<url-pattern>/app/loginapp</url-pattern>
+	</servlet-mapping>
+		
+		
+		
+		<servlet>
+		<servlet-name>FetchContacts</servlet-name>
+		<servlet-class>com.app.getContacts</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FetchContacts</servlet-name>
+		<url-pattern>/app/fetchAll</url-pattern>
+	</servlet-mapping>
+	
+		
+		<servlet>
+		<servlet-name>DeleteContact</servlet-name>
+		<servlet-class>com.app.DeleteContact</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteContact</servlet-name>
+		<url-pattern>/app/DeleteContact</url-pattern>
+	</servlet-mapping>
+	
+		
+		
+		<servlet>
+		<servlet-name>getContacts</servlet-name>
+		<servlet-class>com.app.getContacts</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getContacts</servlet-name>
+		<url-pattern>/app/getContacts</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CreateContact</servlet-name>
+		<servlet-class>com.app.CreateContact</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateContact</servlet-name>
+		<url-pattern>/app/create</url-pattern>
+	</servlet-mapping>
+
+
+<servlet>
+		<servlet-name>CreateContact2</servlet-name>
+		<servlet-class>com.app.CreateContact2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateContact2</servlet-name>
+		<url-pattern>/app/create2</url-pattern>
+	</servlet-mapping>
+
+
+
+<servlet>
+		<servlet-name>UpdateContact</servlet-name>
+		<servlet-class>com.app.UpdateContact</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateContact</servlet-name>
+		<url-pattern>/app/update</url-pattern>
+	</servlet-mapping>
+	
+
+
+	<servlet>
+		<servlet-name>ResetPass</servlet-name>
+		<servlet-class>com.app.ResetPassController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ResetPass</servlet-name>
+		<url-pattern>/app/ResetPass</url-pattern>
+	</servlet-mapping>
+
+
+
+
+<servlet>
+		<servlet-name>UpdateNewPassController</servlet-name>
+		<servlet-class>com.app.UpdateNewPassController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateNewPassController</servlet-name>
+		<url-pattern>/app/updatepass</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.app.LoginController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/app/login</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>LogOutController</servlet-name>
+		<servlet-class>com.app.LogOutController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LogOutController</servlet-name>
+		<url-pattern>/app/logout</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ForgetPassword</servlet-name>
+		<servlet-class>com.app.ForgetPassword</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ForgetPassword</servlet-name>
+		<url-pattern>/app/forgetPassword</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>com.app.RegisterController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/app/register</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.app.UserFilter</filter-class>
+		<init-param>
+			<param-name>avoid-urls</param-name>
+			<param-value>/index.jsp</param-value>
+				
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>/web/welcome.jsp</url-pattern>
+		<url-pattern>/web/jcontact2.jsp</url-pattern>
+		<url-pattern>/app/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
