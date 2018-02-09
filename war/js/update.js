@@ -151,7 +151,7 @@ $("#customlabelbutton").click(function()
 			contentType : "application/json",
 			dataType : 'json',
 			success : function(data) {
-				alert("200");
+				//alert("200");
 			},
 			error : function() {
 				alert("500");

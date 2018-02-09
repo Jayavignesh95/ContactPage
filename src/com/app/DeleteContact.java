@@ -48,9 +48,10 @@ public class DeleteContact extends HttpServlet {
 		List<Contact2> result = (List<Contact2>) q.execute();
 		Contact2 customer = pm.getObjectById(Contact2.class, result.get(0).getKey());
 		pm.deletePersistent(customer);
+		res.getWriter().write("200");
 
 	} catch (JSONException e) {
-		// TODO Auto-generated catch block
+		res.getWriter().write("500");
 		e.printStackTrace();
 	} finally {
 		pm.close();

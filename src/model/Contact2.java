@@ -45,33 +45,29 @@ public class Contact2 {
 	@SerializedName("website")
 	@Expose 
 	private String website;
-  
+    @Persistent
 	private String MobileString;
- 
+ @Persistent
 	private String eMailString;
    
 	@NotPersistent
 	private HashMap<String,ArrayList> MobileNo;
-
+  
 	@NotPersistent
 	private HashMap<String, ArrayList> Email;
 	
-	@NotPersistent
 	public HashMap<String,ArrayList> getMobileNo() {
 		return MobileNo;
-	}
+	} 
 
-	@NotPersistent
 	public void setMobileNo(HashMap<String,ArrayList> mobileNo) {
 		MobileNo = mobileNo;
 	}
 
-	@NotPersistent
 	public HashMap<String, ArrayList> getEmail() {
 		return Email;
 	}
 
-	@NotPersistent
 	public void setEmail(HashMap<String,ArrayList> emailID) {
 		Email = emailID;
 	}
@@ -137,11 +133,11 @@ public class Contact2 {
 	} 
      
 	public void makeString() {
-		Gson g =new Gson();
+		Gson g =new Gson(); 
 		MobileString = g.toJson(MobileNo);
 		eMailString = g.toJson(Email);
 		System.out.println(eMailString);
-	      
+	    System.out.println(MobileString);  
 		
 	}
 }

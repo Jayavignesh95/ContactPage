@@ -2,6 +2,22 @@ body {
 	background: #eee;
 }
 
+
+.buttonsFields  {
+    display: block;
+    padding-left: 100%;
+    margin: 5px;	
+}
+
+.MobilebuttonsFields
+{
+	display: block;
+    padding-left: 100%;
+    margin: 5px;	
+}
+
+
+
 .website-div {
 	float: left;
 	margin-top: 5%;
@@ -37,17 +53,34 @@ body {
   padding-right: 5px;
 }
 
+#event_duration,#available_slots {
+	width: 10%;
+}
 
 .contactsli {
 	margin-top: 5px;
+	margin-left: 10px;
 	float: left;
 	width: 100%;
+	cursor: pointer;
 }
 
+.ContactProfile.up_profile
+{
+	float: left;
+	margin-left : 2%;
+	overflow-y: scroll; 
+	height:600px;
+	border-radius: 10px;
+	
+	/*margin-top : 4%;*/
+}
 
 .contactContainer
 {
 	float:left;
+	width: 10%;
+	
 }
 
 
@@ -176,3 +209,19 @@ p#Err_Message
 .labelfeild {
 	width: 50%;
 }
+
+div
+{
+	  display : block;
+	
+}
+#exTab2
+{
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+  float : right;
+  margin-left : 10px;
+}
+
+

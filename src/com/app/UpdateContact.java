@@ -124,7 +124,13 @@ public class UpdateContact extends HttpServlet {
 			List<Contact2> result = (List<Contact2>) q.execute();
 			Contact2 customer = pm.getObjectById(Contact2.class, result.get(0).getKey());
 			
-			customer = contact;
+			customer.setCompany(contact.getCompany());
+			customer.setEmail(contact.getEmail());
+			customer.setMobileNo(contact.getMobileNo());
+			customer.setTitle(contact.getTitle());
+			customer.setWebsite(contact.getWebsite());
+			customer.setContactName(contact.getContactName());
+			customer.setUserKey(contact.getUserKey());
 		
 			try {
 		pm.makePersistent(customer);
@@ -139,9 +145,5 @@ public class UpdateContact extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		////////////////////////////////
-		//Testing If there is already a row 
 		 }
 }

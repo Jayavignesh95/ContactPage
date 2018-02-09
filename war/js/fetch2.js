@@ -185,7 +185,7 @@ function fetch() {
 
 		},
 		error : function() {
-			alert('Error loading PatientID');
+			alert('Error loading Contacts');
 		}
 	});
 }

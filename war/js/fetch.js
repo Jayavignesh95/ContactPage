@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	fetch();
-	alert("Hey");
 	setTimeout(function() {
 		$("#contact0").trigger('click');
 	}, 1000);
@@ -11,7 +10,7 @@ $(document).on('click', "#delete", function() {
 		console.log("Delet Button Triggered");
 		var deleteKey = {};
 		deleteKey.contactName = $("#UP_FirstName").val();
-		deleteKey.userKey = $("#userKey1").val();
+		deleteKey.userKey = $("#UP_userKey1").val();
 		console.log(deleteKey);
 		var DeleteJson = JSON.stringify(deleteKey);
 		console.log(DeleteJson);
@@ -24,7 +23,7 @@ $(document).on('click', "#delete", function() {
 				alert("SUCCESS FULLY Deleted");
 			},
 			error : function() {
-				alert("SuccessFully Deleted");
+				alert("Failed to Delete");
 			},
 
 			type : 'POST'
@@ -32,6 +31,8 @@ $(document).on('click', "#delete", function() {
 	} else {
 		alert("Enter the valid contact Name");
 	}
+	event.preventDefault();
+
 });
 
 $(document).on('click', ".contactsli", function() {
@@ -206,7 +207,7 @@ function fetch() {
 
 		},
 		error : function() {
-			alert('Error loading PatientID');
+			alert('Error loading contacts');
 		}
 	});
 }

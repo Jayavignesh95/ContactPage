@@ -29,15 +29,14 @@ import model.Contact2;
 
 public class CreateContact2 extends HttpServlet {
 
-	public boolean checkContact( String key,String con)
-	{
-		boolean contactFlag=false;
-PersistenceManager pm = JDOHelper.getPersistenceManagerFactory("transactions-optional").getPersistenceManager();
-		
+	public boolean checkContact(String key, String con) {
+		boolean contactFlag = false;
+		PersistenceManager pm = JDOHelper.getPersistenceManagerFactory("transactions-optional").getPersistenceManager();
+
 		javax.jdo.Query q = pm.newQuery(Contact.class);
 		q.setFilter("userKey == ukey && contactName == contactname");
 		q.declareParameters("String ukey,String contactname");
-		
+
 		String userName = con;
 
 		List<Contact2> results = null;
@@ -46,24 +45,19 @@ PersistenceManager pm = JDOHelper.getPersistenceManagerFactory("transactions-opt
 		Gson a = new GsonBuilder().disableHtmlEscaping().create();
 
 		try {
-			results = (List<Contact2>) q.execute(key,con);
-			if(results.size()==0)
-			{
-			    contactFlag=true;	
+			results = (List<Contact2>) q.execute(key, con);
+			if (results.size() == 0) {
+				contactFlag = true;
+			} else {
+				contactFlag = false;
 			}
-			else
-			{
-				contactFlag=false;
-			}
-		}
-		catch(Exception e)
-		{
-			
+		} catch (Exception e) {
+
 		}
 
 		return contactFlag;
 	}
-	
+
 	private static Map getMap(JSONObject object) {
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -122,8 +116,8 @@ PersistenceManager pm = JDOHelper.getPersistenceManagerFactory("transactions-opt
 
 		StringBuilder builder = new StringBuilder();
 		BufferedReader reader = req.getReader();
-		String line,sessionkey = null;
-		
+		String line, sessionkey = null;
+
 		while ((line = reader.readLine()) != null) {
 			builder.append(line);
 		}
@@ -131,36 +125,29 @@ PersistenceManager pm = JDOHelper.getPersistenceManagerFactory("transactions-opt
 		try {
 			System.out.println(data);
 			JSONObject object = new JSONObject(data);
-			System.out.println("Printing Email from json object"+object.getJSONObject("mobile"));
-			
+			System.out.println("Printing Email from json object" + object.getJSONObject("mobile"));
+
 			MobileNo = (HashMap<String, ArrayList>) getMap(object.getJSONObject("mobile"));
 			EmailID = (HashMap<String, ArrayList>) getMap(object.getJSONObject("email"));
-			
+
 			System.out.println("Testing with New COntact Design");
 			System.out.println(MobileNo);
 			System.out.println("Map to String " + MobileNo.toString());
-			//System.out.println("Hello" + EmailID.toString());
 			Gson g2 = new Gson();
-			System.out.println("JSON from MAP "+g2.toJson(MobileNo));
+			System.out.println("JSON from MAP " + g2.toJson(MobileNo));
 			String jsonText = object.toString();
 
-		Contact2 contact = new Contact2();
-		Gson s = new Gson();
-		contact = s.fromJson(jsonText, Contact2.class);
-		
-		
+			Contact2 contact = new Contact2();
+			Gson s = new Gson();
+			contact = s.fromJson(jsonText, Contact2.class);
+
 			contact.setEmail(EmailID);
 			contact.setMobileNo(MobileNo);
-//			contact.setMobileNo(MobileNo);
-//			System.out.println("From Contact EMail" + contact.getEmail().values());
-//			System.out.println("From Contact MobileNo" + contact.getMobileNo().values());
-//			sessionkey =contact.getUserKey();
 			contact.makeString();
-//			System.out.println(contact.getContactName());
 			PersistenceManager pm = JDOHelper.getPersistenceManagerFactory("transactions-optional")
 					.getPersistenceManager();
 			try {
-		pm.makePersistent(contact);
+				pm.makePersistent(contact);
 				System.out.println("ADDED");
 				resp.getWriter().write("200");
 
@@ -168,18 +155,15 @@ PersistenceManager pm = JDOHelper.getPersistenceManagerFactory("transactions-opt
 				pm.close();
 			}
 
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	  
+
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+
 		System.out.println("Trigger from CreateContact Servlet");
 	}
 }
